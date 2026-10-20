@@ -1,0 +1,42 @@
+{
+  "name": "electron-updater-strict-authenticode",
+  "version": "0.1.0",
+  "description": "Fail-closed Windows Authenticode check for electron-updater: rejects the update when PowerShell cannot verify it, instead of skipping validation, and never accepts a bare common name.",
+  "license": "MIT",
+  "author": "a5768549",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a5768549/electron-updater-strict-authenticode.git"
+  },
+  "homepage": "https://github.com/a5768549/electron-updater-strict-authenticode#readme",
+  "bugs": "https://github.com/a5768549/electron-updater-strict-authenticode/issues",
+  "keywords": ["electron", "electron-updater", "authenticode", "code-signing", "windows", "nsis", "auto-update", "security"],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "src"],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test --experimental-strip-types test/index.test.ts",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "peerDependencies": {
+    "builder-util-runtime": ">=9.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "builder-util-runtime": "^9.7.0",
+    "electron-updater": "^6.8.9",
+    "typescript": "^5.7.0"
+  }
+}
